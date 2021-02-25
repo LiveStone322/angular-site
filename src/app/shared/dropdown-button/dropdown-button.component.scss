@@ -1,0 +1,22 @@
+:host {
+  position: relative;
+  top: 32px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 46px;
+  background: linear-gradient(130deg, rgba(145, 230, 252, 0.2), rgba(145, 230, 252, 0.1));
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+}
+
+.btn span {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 16px;
+}

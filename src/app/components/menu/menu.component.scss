@@ -1,0 +1,14 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  app-button {
+    margin-top: 12px;
+    z-index: 2;
+  }
+}

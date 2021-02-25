@@ -1,1 +1,10 @@
-<p>App is working!</p>
+<div class="menu-wrapper">
+  <app-menu></app-menu>
+</div>
+<div [class]="'router-wrapper ' + getRouteClass()">
+  <div class='container'>
+    <app-page>
+      <router-outlet></router-outlet>
+    </app-page>
+  </div>
+</div>

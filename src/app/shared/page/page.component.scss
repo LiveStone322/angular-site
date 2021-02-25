@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.lang {
+  flex-grow: 0;
+}
+
+.content {
+  flex-grow: 1;
+}

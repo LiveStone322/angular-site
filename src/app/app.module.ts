@@ -7,12 +7,24 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { RouterModule } from '@angular/router';
-import { routes } from './app.routing';
+import { RouterModule, Routes } from '@angular/router';
+import { MenuComponent } from './components/menu/menu.component';
+import { ButtonModule } from './shared/button/button.module';
+import { ScullyLibModule } from '@scullyio/ng-lib';
+import { PageModule } from './shared/page/page.module';
+
+const routes: Routes = [
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
+  { path: 'works', loadChildren: () => import('./modules/works/works.module').then(m => m.WorksModule) },
+  { path: 'skills', loadChildren: () => import('./modules/skills/skills.module').then(m => m.SkillsModule) },
+  { path: 'links', loadChildren: () => import('./modules/links/links.module').then(m => m.LinksModule) },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,9 +32,12 @@ import { routes } from './app.routing';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    ButtonModule,
+    ScullyLibModule,
+    PageModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
