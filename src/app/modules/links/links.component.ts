@@ -18,6 +18,8 @@ export class LinksComponent implements OnInit {
     [Langs.ENG]: 'GitHub'
   };
 
+  public inputText = '123';
+
   constructor() { }
 
   ngOnInit(): void {

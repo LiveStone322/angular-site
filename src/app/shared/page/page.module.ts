@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageComponent } from './page.component';
 import { DropdownButtonModule } from '../dropdown-button/dropdown-button.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,6 +11,8 @@ import { DropdownButtonModule } from '../dropdown-button/dropdown-button.module'
   imports: [
     CommonModule,
     DropdownButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [PageComponent]
 })

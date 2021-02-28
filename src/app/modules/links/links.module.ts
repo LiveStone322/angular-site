@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LinksComponent } from './links.component';
 import { ButtonModule } from 'src/app/shared/button/button.module';
 import { LanguagedTextModule } from 'src/app/shared/languaged-text/languaged-text.module';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
-    LanguagedTextModule
+    LanguagedTextModule,
+    FormsModule
   ]
 })
 export class LinksModule { }
