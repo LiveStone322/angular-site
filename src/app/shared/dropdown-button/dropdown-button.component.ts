@@ -9,10 +9,18 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 export class DropdownButtonComponent implements OnInit {
 
   public items: string[] = ['RU', 'ENG'];
+  public active = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onExpandClick(): void {
+    this.active = !this.active;
+  }
+
+  onItemClick(idx: number): void {
+    if (this.active) console.log(this.items[idx]);
+  }
 }

@@ -1,10 +1,23 @@
-<div class="menu-wrapper">
-  <app-menu></app-menu>
-</div>
 <div [class]="'router-wrapper ' + getRouteClass()">
   <div class='container'>
+    <ng-container *ngIf="!isMobile;else mobileMenu">
+      <div class="row justify-content-between">
+        <app-menu></app-menu>
+        <app-page class="col-9">
+          <router-outlet></router-outlet>
+        </app-page>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #mobileMenu>
+  <div class="row">
     <app-page>
       <router-outlet></router-outlet>
     </app-page>
   </div>
-</div>
+  <div class="row">
+    <app-menu [isMobile]="true"></app-menu>
+  </div>
+</ng-template>

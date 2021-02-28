@@ -1,11 +1,17 @@
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   box-sizing: border-box;
 }
 
-h1, h2, h3 {
-  font-family: 'Vollkorn', serif;
+body {
+  min-width: 460px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Vollkorn", serif;
   font-weight: 800;
 }
 

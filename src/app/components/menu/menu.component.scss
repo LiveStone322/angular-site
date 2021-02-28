@@ -1,12 +1,22 @@
-:host {
+.wrapper {
   height: 100%;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-}
-.container {
-  display: flex;
-  flex-flow: column wrap;
+  position: fixed;
+  z-index: 999;
+  &_mobile {
+    position: absolute;
+    bottom: 17px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-flow: row wrap;
+    justify-content: center;
+    app-button {
+      margin-right: 6px;
+    }
+  }
   app-button {
     margin-top: 12px;
     z-index: 2;
