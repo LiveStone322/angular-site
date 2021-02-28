@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Langs } from '../models/langs.model';
+import { LanguagedText } from '../models/languaged-text.model';
 
 @Component({
   selector: 'app-button',
@@ -8,7 +10,10 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class ButtonComponent implements OnInit {
 
-  @Input() text = '';
+  @Input() texts: LanguagedText = {
+    [Langs.RU]: '',
+    [Langs.ENG]: ''
+  };
   @Input() isBig = false;
   @Input() isActive = false;
 

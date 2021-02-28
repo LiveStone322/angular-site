@@ -1,0 +1,4 @@
+<ng-container [ngSwitch]="lang$ | async">
+  <div *ngSwitchCase="langsEnum.RU">{{languagedTexts[langsEnum.RU]}}</div>
+  <div *ngSwitchDefault>{{languagedTexts[langsEnum.ENG]}}</div>
+</ng-container>

@@ -1,5 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Langs } from 'src/app/shared/models/langs.model';
+import { LanguagedText } from 'src/app/shared/models/languaged-text.model';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +25,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public texts: LanguagedText = {
+    [Langs.RU]: 'Огонь фронтендер 🔥',
+    [Langs.ENG]: 'Front-ender on fire 🔥',
+  }
   constructor() { }
 
   ngOnInit(): void {

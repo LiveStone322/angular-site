@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { LinksComponent } from './links.component';
 import { ButtonModule } from 'src/app/shared/button/button.module';
+import { LanguagedTextModule } from 'src/app/shared/languaged-text/languaged-text.module';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
+    LanguagedTextModule
   ]
 })
 export class LinksModule { }

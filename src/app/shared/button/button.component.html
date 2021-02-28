@@ -1,1 +1,3 @@
-<button [ngClass]="{big: isBig}">{{text}}</button>
+<button [ngClass]="{big: isBig}">
+  <app-languaged-text [languagedTexts]="texts"></app-languaged-text>
+</button>

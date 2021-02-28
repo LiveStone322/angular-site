@@ -7,12 +7,13 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
 import { ButtonModule } from './shared/button/button.module';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { PageModule } from './shared/page/page.module';
+import { appReducers } from './store/reducers/app.reducers';
+import { LangEffects } from './store/effects/lang.effects';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), data: { id: 1 } },
@@ -31,13 +32,15 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
     ButtonModule,
     ScullyLibModule,
-    PageModule
+    PageModule,
+    EffectsModule.forRoot([LangEffects]),
+    StoreModule.forRoot(appReducers),
+    !environment.production ? StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }) : []
   ],
   providers: [],
   bootstrap: [AppComponent],
