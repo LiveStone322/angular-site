@@ -12,7 +12,7 @@ app-header {
 .router-wrapper {
   background-size: 400vw;
   flex-grow: 1;
-  transition: all 1.5s;
+  transition: background-position 1.5s;
   background-image: radial-gradient(33.38% 800px at 48.92% 0%, #f3c0f1 0%, rgba(230, 176, 227, 0) 100%),
     radial-gradient(48.8% 173.38% at 100% 100%, rgba(200, 243, 243, 0.72) 0%, rgba(203, 238, 243, 0) 100%),
     radial-gradient(35.34% 118.7% at 0% 0%, rgba(69, 210, 254, 0.64) 0%, rgba(69, 210, 254, 0) 100%);
@@ -39,5 +39,11 @@ app-header {
   .container {
     display: flex;
     flex-direction: column;
+  }
+  .route-container {
+    position: relative;
+    & > * {
+      display: block;
+    }
   }
 }

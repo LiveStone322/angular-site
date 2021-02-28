@@ -21,6 +21,11 @@ export class DropdownButtonComponent implements OnInit {
   }
 
   onItemClick(idx: number): void {
-    if (this.active) console.log(this.items[idx]);
+    if (this.active) {
+      const item = this.items[idx];
+      this.items[idx] = this.items[0];
+      this.items[0] = item;
+      console.log(item);
+    }
   }
 }
