@@ -14,6 +14,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { PageModule } from './shared/page/page.module';
 import { appReducers } from './store/reducers/app.reducers';
 import { LangEffects } from './store/effects/lang.effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), data: { id: 1 } },
@@ -40,7 +41,8 @@ const routes: Routes = [
     !environment.production ? StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
-    }) : []
+    }) : [],
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],
