@@ -1,4 +1,7 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'src/app/shared/button/button.module';
 
 import { MenuComponent } from './menu.component';
 
@@ -8,9 +11,10 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuComponent ]
-    })
-    .compileComponents();
+      imports: [ButtonModule],
+      declarations: [MenuComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {

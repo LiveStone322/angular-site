@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "scully": "scully",
@@ -41,11 +42,13 @@
     "@angular-devkit/build-angular": "~0.1100.4",
     "@angular/cli": "~11.0.4",
     "@angular/compiler-cli": "~11.0.4",
-    "@types/jasmine": "~3.6.0",
+    "@types/jest": "^26.0.20",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
+    "jest": "^26.6.3",
+    "jest-preset-angular": "^8.3.2",
     "karma": "~5.1.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
@@ -55,5 +58,11 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ]
   }
 }
