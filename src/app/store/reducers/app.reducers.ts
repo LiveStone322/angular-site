@@ -4,6 +4,5 @@ import { AppState } from '../state/app.state';
 import { langReducers } from './lang.reducer';
 
 export const appReducers: ActionReducerMap<AppState, any> = {
-  router: routerReducer,
-  lang: langReducers
-}
+  lang: langReducers,
+};

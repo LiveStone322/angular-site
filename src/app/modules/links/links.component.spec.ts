@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { ButtonModule } from 'src/app/shared/button/button.module';
+import { LanguagedTextModule } from 'src/app/shared/languaged-text/languaged-text.module';
+import { getInitialState } from 'src/app/store/state/app.state';
 
 import { LinksComponent } from './links.component';
 
@@ -8,9 +12,10 @@ describe('LinksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LinksComponent ]
-    })
-    .compileComponents();
+      imports: [ButtonModule, LanguagedTextModule],
+      declarations: [LinksComponent],
+      providers: [provideMockStore({ initialState: getInitialState() })],
+    }).compileComponents();
   });
 
   beforeEach(() => {

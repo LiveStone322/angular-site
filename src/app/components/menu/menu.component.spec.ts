@@ -1,7 +1,8 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 import { ButtonModule } from 'src/app/shared/button/button.module';
+import { getInitialState } from 'src/app/store/state/app.state';
 
 import { MenuComponent } from './menu.component';
 
@@ -14,6 +15,7 @@ describe('MenuComponent', () => {
       imports: [ButtonModule],
       declarations: [MenuComponent],
       schemas: [NO_ERRORS_SCHEMA],
+      providers: [provideMockStore({ initialState: getInitialState() })],
     }).compileComponents();
   });
 

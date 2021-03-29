@@ -15,6 +15,7 @@ import { PageModule } from './shared/page/page.module';
 import { appReducers } from './store/reducers/app.reducers';
 import { LangEffects } from './store/effects/lang.effects';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TestStoreComponent } from './store/test-store/test-store.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), data: { id: 1 } },
@@ -28,6 +29,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     MenuComponent,
+    TestStoreComponent,
   ],
   imports: [
     BrowserModule,

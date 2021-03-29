@@ -1,5 +1,12 @@
-import { query, transition, trigger, style, group, animate } from '@angular/animations';
-import { Component, HostListener, OnInit } from '@angular/core';
+import {
+  query,
+  transition,
+  trigger,
+  style,
+  group,
+  animate,
+} from '@angular/animations';
+import { Component, HostListener, OnInit, Optional } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { getWindowSize } from './shared/functions/getWindowSize';
 
@@ -15,32 +22,51 @@ import { getWindowSize } from './shared/functions/getWindowSize';
         query(':enter, :leave', style({ position: 'absolute', width: '100%' })),
         group([
           query(':leave', [
-            animate('.5s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(-100%)', opacity: 0 })),
+            animate(
+              '.5s cubic-bezier(.35,0,.25,1)',
+              style({ transform: 'translateX(-100%)', opacity: 0 })
+            ),
           ]),
-          query(':enter', animate('.5s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(0)', opacity: 1 }))),
+          query(
+            ':enter',
+            animate(
+              '.5s cubic-bezier(.35,0,.25,1)',
+              style({ transform: 'translateX(0)', opacity: 1 })
+            )
+          ),
         ]),
       ]),
       transition('4 => 1, 4 => 2, 4 => 3, 3 => 1, 3 => 2, 2 => 1', [
         style({ height: '!' }),
         query(':enter', style({ transform: 'translateX(-100%)', opacity: 0 })),
-        query(':enter, :leave', style({ position: 'absolute', width: '100%', paddingRight: '31px' })),
+        query(
+          ':enter, :leave',
+          style({ position: 'absolute', width: '100%', paddingRight: '31px' })
+        ),
         group([
           query(':leave', [
-            animate('.5s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(100%)', opacity: 0 })),
+            animate(
+              '.5s cubic-bezier(.35,0,.25,1)',
+              style({ transform: 'translateX(100%)', opacity: 0 })
+            ),
           ]),
-          query(':enter', animate('.5s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(0)', opacity: 1 }))),
+          query(
+            ':enter',
+            animate(
+              '.5s cubic-bezier(.35,0,.25,1)',
+              style({ transform: 'translateX(0)', opacity: 1 })
+            )
+          ),
         ]),
       ]),
-    ])
-  ]
+    ]),
+  ],
 })
 export class AppComponent implements OnInit {
   public title = 'my-site';
   public isMobile = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-
-  }
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   @HostListener('window:resize') onResize() {
     this.updateIsMobile();
@@ -52,9 +78,9 @@ export class AppComponent implements OnInit {
 
   public getRouteClass(): string {
     const path = this.activatedRoute.snapshot.firstChild?.routeConfig.path;
-    if (!path) return ''
+    if (!path) return '';
 
-    return 'path_' + path
+    return 'path_' + path;
   }
 
   public getId(outlet: RouterOutlet) {

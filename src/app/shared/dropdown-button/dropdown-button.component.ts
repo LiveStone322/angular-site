@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, forwardRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  forwardRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Optional,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -7,27 +15,33 @@ import { Langs } from '../models/langs.model';
 
 /**Todo
  * сделать выбор на основе состояния в ngrx
-*/
+ */
 @Component({
   selector: 'app-dropdown-button',
   templateUrl: './dropdown-button.component.html',
   styleUrls: ['./dropdown-button.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DropdownButtonComponent),
-    multi: true
-  }],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DropdownButtonComponent),
+      multi: true,
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownButtonComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-
-  public items: string[] = Object.keys(Langs).filter((val) => isNaN(Number(val)))
+export class DropdownButtonComponent
+  implements OnInit, AfterViewInit, ControlValueAccessor {
+  public items: string[] = Object.keys(Langs).filter((val) =>
+    isNaN(Number(val))
+  );
   public active = false;
 
-  constructor(private store: Store, private cd: ChangeDetectorRef) { }
+  constructor(
+    @Optional() private store: Store,
+    @Optional() private cd: ChangeDetectorRef
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   ngAfterViewInit(): void {
     setTimeout(() => this.updateStore(this.items[0]));
   }
@@ -49,8 +63,8 @@ export class DropdownButtonComponent implements OnInit, AfterViewInit, ControlVa
   chooseItem(item: string, idx: number = -1): void {
     if (idx < 0) {
       idx = this.items.findIndex((curItem) => {
-        if (curItem === item) return true
-      })
+        if (curItem === item) return true;
+      });
       if (idx < 0) return;
     }
     this.items[idx] = this.items[0];
@@ -62,8 +76,8 @@ export class DropdownButtonComponent implements OnInit, AfterViewInit, ControlVa
     this.store.dispatch(new GetLang());
   }
 
-  onChange: any = () => { }
-  onTouch: any = () => { }
+  onChange: any = () => {};
+  onTouch: any = () => {};
 
   writeValue(value: string) {
     this.chooseItem(value);

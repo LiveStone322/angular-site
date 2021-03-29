@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownButtonModule } from '../dropdown-button/dropdown-button.module';
 
 import { PageComponent } from './page.component';
 
@@ -8,9 +10,9 @@ describe('PageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageComponent ]
-    })
-    .compileComponents();
+      imports: [DropdownButtonModule, ReactiveFormsModule, FormsModule],
+      declarations: [PageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
